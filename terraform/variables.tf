@@ -8,11 +8,6 @@ variable "region" {
   default     = "ca-central-1"
 }
 
-variable "env" {
-  description = "Depolyment environment"
-  default     = "dev"
-}
-
 variable "repository_branch" {
   description = "Repository branch to connect to"
   default     = "develop"

@@ -1,5 +1,5 @@
 data "template_file" "buildspec" {
-  template = "${file("buildspec.yml")}"
+  template = "${file("../buildspec.yml")}"
   vars = {
     env          = var.env
   }
@@ -10,7 +10,7 @@ resource "aws_codebuild_project" "static_web_build" {
   build_timeout  = 60
   name           = "static-web-build"
   queued_timeout = 480
-  service_role   = data.aws_iam_role.static_build_role.arn
+  service_role   = aws_iam_role.codebuild.arn
   tags = {
     Environment = var.env
   }

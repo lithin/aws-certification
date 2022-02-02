@@ -1,6 +1,6 @@
 resource "aws_codepipeline" "static_web_pipeline" {
   name     = "static-web-pipeline"
-  role_arn = data.aws_iam_role.pipeline_role.arn
+  role_arn = aws_iam_role.codebuild.arn
   tags     = {
     Environment = var.env
   }
