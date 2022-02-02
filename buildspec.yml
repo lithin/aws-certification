@@ -9,8 +9,9 @@ phases:
     runtime-versions:
       nodejs: 12
     commands:
-      - npm i
-      # - npm run lint
+      - "cd /usr/bin"
+      - "curl -s -qL -o terraform.zip https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip"
+      - "unzip -o terraform.zip"
   pre_build:
     commands:
       - npm i
@@ -18,7 +19,9 @@ phases:
   build:
     commands:
       - npm run build
-      - cd terraform && terraform apply
+      - cd terraform
+      - terraform init 
+      - terraform apply -auto-approve
 
 artifacts:
   files:
