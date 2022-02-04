@@ -10,7 +10,7 @@ phases:
       nodejs: 12
     commands:
       - "cd /usr/bin"
-      - "curl -s -qL -o terraform.zip https://releases.hashicorp.com/terraform/3.27/terraform_3.27_linux_amd64.zip"
+      - "curl -s -qL -o terraform.zip https://releases.hashicorp.com/terraform/1.1.5/terraform_1.1.5_linux_amd64.zip"
       - "unzip -o terraform.zip"
   pre_build:
     commands:
