@@ -14,6 +14,7 @@ phases:
       - "unzip -o terraform.zip"
   pre_build:
     commands:
+      - cd ~/
       - npm i
       - npm run test
   build:
