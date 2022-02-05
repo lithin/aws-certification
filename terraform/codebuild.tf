@@ -10,7 +10,7 @@ resource "aws_codebuild_project" "static_web_build" {
   build_timeout  = 60
   name           = "static-web-build"
   queued_timeout = 480
-  service_role   = aws_iam_role.codebuild.arn
+  service_role   = "arn:aws:iam::907192535403:role/service-role/codebuild-aws-certification-service-role"
   tags = {
     Environment = var.env
   }
