@@ -14,7 +14,7 @@ phases:
       - "unzip -o terraform.zip"
   pre_build:
     commands:
-      - cd CODEBUILD_SRC_DIR
+      - cd $CODEBUILD_SRC_DIR
       - npm i
       - npm run test
   build:
