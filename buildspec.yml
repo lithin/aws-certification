@@ -22,6 +22,7 @@ phases:
       - npm run build
       - cd terraform
       - terraform init 
+      - terraform validate
       - terraform apply -auto-approve
 
 artifacts:
