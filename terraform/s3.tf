@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "remote_state" {
-  bucket = "tf-state-s3"
+  bucket = "anna-aws-certification-tf-state-s3"
   acl    = "private"
   force_destroy = true
 
