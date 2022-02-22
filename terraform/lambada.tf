@@ -1,22 +1,23 @@
 resource "aws_iam_role" "iam_for_lambda" {
-  name = "iam_for_lambda"
+      name = "iam_for_lambda"
+      path = "/"
 
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
+      assume_role_policy = <<EOF
     {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Action": "sts:AssumeRole",
+          "Principal": {
+            "Service": "lambda.amazonaws.com"
+          },
+          "Effect": "Allow",
+          "Sid": ""
+        }
+      ]
     }
-  ]
-}
-EOF
-}
+    EOF
+    }
 
 data "archive_file" "lambda_zip" {
     type          = "zip"
