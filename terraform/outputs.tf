@@ -4,7 +4,7 @@ output "dynamodb-lock-table" {
 }
 
 output "dynamodb-lock-table-ssm-parameter" {
-    value = "tf/tf-locks-table-arn"
+    value = "/tf/tf-locks-table-arn"
     description = "SSM parameter containing DynamoDB table for Terraform execution locks"
 }
 
@@ -14,6 +14,6 @@ output "s3-state-bucket" {
 }
 
 output "s3-state-bucket-ssm-parameter" {
-    value = "tf/tf-remote-state-bucket"
+    value = "/tf/tf-remote-state-bucket"
     description = "SSM parameter containing S3 bucket for storing Terraform state"
 }

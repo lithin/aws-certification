@@ -12,7 +12,7 @@ resource "aws_dynamodb_table" "lock_table" {
 }
 
 resource "aws_ssm_parameter" "locks_table_arn" {
-  name  = "tf/tf-locks-table-arn"
+  name  = "/tf/tf-locks-table-arn"
   type  = "String"
   value = aws_dynamodb_table.lock_table.arn
 }

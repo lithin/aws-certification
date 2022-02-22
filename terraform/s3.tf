@@ -87,7 +87,7 @@ POLICY
 }
 
 resource "aws_ssm_parameter" "remote_state_bucket" {
-  name  = "tf/tf-remote-state-bucket"
+  name  = "/tf/tf-remote-state-bucket"
   type  = "String"
   value = aws_s3_bucket.remote_state.id
 }
