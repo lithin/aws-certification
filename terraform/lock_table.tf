@@ -4,7 +4,6 @@ resource "aws_dynamodb_table" "lock_table" {
   read_capacity  = 5
   write_capacity = 5
   hash_key       = "LockID"
-  tags           = local.common_tags
 
   attribute {
     name = "LockID"

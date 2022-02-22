@@ -19,7 +19,6 @@ resource "aws_s3_bucket" "remote_state" {
     prevent_destroy = false
   }
 
-  tags = local.common_tags
 }
 
 resource "aws_s3_bucket_public_access_block" "s3Public_remote_state" {
