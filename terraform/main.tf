@@ -10,7 +10,7 @@ terraform {
 
   backend "s3" {
     encrypt = true
-    bucket = "tf-state-s3"
+    bucket = "anna-aws-certification-tf-state-s3"
     dynamodb_table = "tf-lock-table"
     key = "terraform.tfstate"
     region = "ca-central-1"
