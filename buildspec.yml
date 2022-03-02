@@ -16,14 +16,17 @@ phases:
     commands:
       - cd $CODEBUILD_SRC_DIR
       - npm i
-      - npm run test
   build:
     commands:
-      - npm run build
       - cd terraform
       - terraform init 
       - terraform validate
       - terraform apply -auto-approve
+  # build:
+  #   commands:
+  #     - cd $CODEBUILD_SRC_DIR/src/front-end
+  #     - npm i
+  #     - npm run build:front-end 
 
 artifacts:
   files:

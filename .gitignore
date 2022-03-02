@@ -1,2 +1,6 @@
 terraform/.terraform/*
 terraform/.terraform.lock.hcl
+
+dist
+
+src/front-end/node_modules
