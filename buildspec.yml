@@ -14,19 +14,17 @@ phases:
       - "unzip -o terraform.zip"
   pre_build:
     commands:
-      - cd $CODEBUILD_SRC_DIR
-      - npm i
-  build:
-    commands:
-      - cd terraform
+      - cd $CODEBUILD_SRC_DIR/terraform
       - terraform init 
       - terraform validate
       - terraform apply -auto-approve
-  # build:
-  #   commands:
-  #     - cd $CODEBUILD_SRC_DIR/src/front-end
-  #     - npm i
-  #     - npm run build:front-end 
+  build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR/src/front-end
+      - npm i
+      - npm run build
+      - aws s3 sync ./src/front-end/build s3://anna-aws-certification-front-end
+      - aws cloudfront create-invalidation --distribution-id "E1MXY79U7EY3UN" --paths '/*'
 
 artifacts:
   files:
