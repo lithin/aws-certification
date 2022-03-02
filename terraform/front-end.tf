@@ -30,6 +30,8 @@ resource "aws_cloudfront_distribution" "front_end" {
   }
 }
 
+resource "aws_cloudfront_origin_access_identity" "default" {}
+
 
 # s3
 
