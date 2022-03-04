@@ -70,3 +70,23 @@ resource "aws_s3_bucket" "front_end" {
     group = "Frontend"
   }
 }
+
+resource "aws_s3_bucket_policy" "front_end" {
+  bucket = aws_s3_bucket.front_end.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid       = "PublicReadGetObject"
+        Effect    = "Allow"
+        Principal = "*"
+        Action    = "s3:GetObject"
+        Resource = [
+          aws_s3_bucket.front_end.arn,
+          "${aws_s3_bucket.front_end.arn}/*",
+        ]
+      },
+    ]
+  })
+}
