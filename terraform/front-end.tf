@@ -53,7 +53,18 @@ resource "aws_cloudfront_origin_access_identity" "default" {}
 
 resource "aws_s3_bucket" "front_end" {
   bucket = "anna-aws-certification-front-end"
-  acl    = "private"
+  acl    = "public-read"
+
+  cors_rule {
+    allowed_headers = ["Authorization", "Content-Length"]
+    allowed_methods = ["GET", "POST"]
+    allowed_origins = ["https://cloudfront.net"]
+    max_age_seconds = 3000
+  }
+
+  website {
+    index_document = "index.html"
+  }
 
   tags = {
     group = "Frontend"
