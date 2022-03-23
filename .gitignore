@@ -4,3 +4,4 @@ terraform/.terraform.lock.hcl
 dist
 
 src/front-end/node_modules
+src/front-end-2/node_modules

@@ -1,4 +1,4 @@
-resource "aws_cloudfront_distribution" "front_end" {
+resource "aws_cloudfront_distribution" "front_end_2" {
   enabled             = true
   is_ipv6_enabled     = true
   default_root_object = "index.html"
@@ -18,10 +18,10 @@ resource "aws_cloudfront_distribution" "front_end" {
     # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-origin.html
 
     origin_id   = "frontend" # must be unique within distribution
-    domain_name = aws_s3_bucket.front_end.bucket_regional_domain_name
+    domain_name = aws_s3_bucket.front_end_2.bucket_regional_domain_name
 
     s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.default.cloudfront_access_identity_path
+      origin_access_identity = aws_cloudfront_origin_access_identity.default_2.cloudfront_access_identity_path
     }
   }
 
@@ -46,13 +46,13 @@ resource "aws_cloudfront_distribution" "front_end" {
   }
 }
 
-resource "aws_cloudfront_origin_access_identity" "default" {}
+resource "aws_cloudfront_origin_access_identity" "default_2" {}
 
 
 # s3
 
-resource "aws_s3_bucket" "front_end" {
-  bucket = "anna-aws-certification-front-end"
+resource "aws_s3_bucket" "front_end_2" {
+  bucket = "anna-aws-certification-front-end-2"
   acl    = "public-read"
 
   cors_rule {
@@ -71,8 +71,8 @@ resource "aws_s3_bucket" "front_end" {
   }
 }
 
-resource "aws_s3_bucket_policy" "front_end" {
-  bucket = aws_s3_bucket.front_end.id
+resource "aws_s3_bucket_policy" "front_end_2" {
+  bucket = aws_s3_bucket.front_end_2.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -83,8 +83,8 @@ resource "aws_s3_bucket_policy" "front_end" {
         Principal = "*"
         Action    = "s3:GetObject"
         Resource = [
-          aws_s3_bucket.front_end.arn,
-          "${aws_s3_bucket.front_end.arn}/*",
+          aws_s3_bucket.front_end_2.arn,
+          "${aws_s3_bucket.front_end_2.arn}/*",
         ]
       },
     ]

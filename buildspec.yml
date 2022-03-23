@@ -25,6 +25,11 @@ phases:
       - npm run build
       - aws s3 sync ./build s3://anna-aws-certification-front-end
       - aws cloudfront create-invalidation --distribution-id "E1MXY79U7EY3UN" --paths '/*'
+      - cd $CODEBUILD_SRC_DIR/src/front-end-2
+      - npm i
+      - npm run build
+      - aws s3 sync ./build s3://anna-aws-certification-front-end-2
+      # - aws cloudfront create-invalidation --distribution-id "E1MXY79U7EY3UN" --paths '/*'
 
 # artifacts:
 #   files:
