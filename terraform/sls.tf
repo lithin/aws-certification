@@ -48,7 +48,7 @@ data "aws_iam_policy_document" "serverless_deployments" {
       "cloudformation:GetTemplate",
     ]
     resources = [
-      "arn:aws:cloudformation:ca-central-1:${local.aws_account_id}:stack/${local.app_name}-*",
+      "arn:aws:cloudformation:${var.region}:${local.aws_account_id}:stack/${local.app_name}-*",
     ]
   }
 
@@ -76,10 +76,9 @@ data "aws_iam_policy_document" "serverless_deployments" {
   statement {
     effect = "Allow"
     actions = [
-      "lambda:UpdateFunctionCode",
-      "lambda:PublishVersion"
+      "lambda:*"
     ]
-    resources = ["arn:aws:lambda:ca-central-1:${local.aws_account_id}:function:${local.app_name}-*",]
+    resources = ["arn:aws:lambda:${var.region}:${local.aws_account_id}:function:${local.app_name}-*", ]
   }
 
   statement {
@@ -130,7 +129,78 @@ data "aws_iam_policy_document" "serverless_deployments" {
     ]
   }
 
-  # for slackbot deployments
+  statement {
+    effect = "Allow"
+    actions = [
+      "apigateway:GET",
+      "apigateway:POST",
+      "apigateway:PUT",
+      "apigateway:PATCH",
+      "apigateway:DELETE",
+      "apigateway:TagResource"
+    ]
+    resources = [
+      "arn:aws:apigateway:${var.region}::/*"
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "logs:Create*",
+      "logs:Delete*",
+      "logs:Describe*",
+      "logs:Filter*",
+      "logs:Get*",
+      "logs:List*",
+      "logs:Put*",
+      "logs:Tag*",
+      "logs:Untag*",
+      "logs:Update*",
+    ]
+    resources = [
+      "arn:aws:logs:${var.region}:${local.aws_account_id}:log-group:/aws/lambda/${local.app_name}-*",
+      "arn:aws:logs:${var.region}:${local.aws_account_id}:log-group:/aws/http-api/${local.app_name}-*",
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "logs:Create*",
+      "logs:Describe*",
+      "logs:Filter*",
+      "logs:Get*",
+      "logs:List*",
+      "logs:Tag*",
+    ]
+    resources = [
+      "*",
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "events:Describe*",
+      "events:Get*",
+      "events:List*",
+      "events:CreateEventBus",
+      "events:DeleteEventBus",
+      "events:PutRule",
+      "events:DeleteRule",
+      "events:PutTargets",
+      "events:RemoveTargets",
+      "events:TagResource",
+      "events:UntagResource",
+    ]
+    resources = [
+      "arn:aws:events:${var.region}:${local.aws_account_id}:event-bus/${local.app_name}-*",
+      "arn:aws:events:${var.region}:${local.aws_account_id}:rule/${local.app_name}-*"
+    ]
+  }
+
+    # for slackbot deployments
   statement {
     effect = "Allow"
     actions = [
@@ -140,6 +210,7 @@ data "aws_iam_policy_document" "serverless_deployments" {
       data.aws_ssm_parameter.opsgenie_api_key.arn,
       data.aws_ssm_parameter.slack_signature.arn,
       data.aws_ssm_parameter.slack_app_id.arn,
+      data.aws_ssm_parameter.slack_yellow_alert_hook_url.arn,
     ]
   }
 }
@@ -154,4 +225,8 @@ data "aws_ssm_parameter" "slack_signature" {
 
 data "aws_ssm_parameter" "slack_app_id" {
   name = "/admin/slack-app-id"
+}
+
+data "aws_ssm_parameter" "slack_yellow_alert_hook_url" {
+  name = "/admin/slack-yellow-alert-hook-url"
 }
