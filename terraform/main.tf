@@ -8,13 +8,13 @@ terraform {
 
   required_version = ">= 0.14.9"
 
-  # backend "s3" {
-  #   encrypt = true
-  #   bucket = "anna-aws-certification-tf-state-s3"
-  #   dynamodb_table = "tf-lock-table"
-  #   key = "terraform.tfstate"
-  #   region = "ca-central-1"
-  # }
+  backend "s3" {
+    encrypt = true
+    bucket = "anna-aws-certification-tf-state-s3"
+    dynamodb_table = "tf-lock-table"
+    key = "terraform.tfstate"
+    region = "ca-central-1"
+  }
 }
 
 provider "aws" {
