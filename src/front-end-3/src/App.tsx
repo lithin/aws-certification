@@ -41,10 +41,10 @@ function App() {
               <button type="submit" className="Submit">Get the wand</button>
             </form>
             {answer ? 
-            <>
-              <p>{answer}</p>
-              <img src="https://www.pngfind.com/pngs/m/288-2885603_png-image-with-transparent-background-cartoon-hippo-png.png" />
-              </> : <p>The fountain is waiting for correct answer.</p>
+            <div className="Row">
+              <p className="Text">{answer}</p>
+              <img className="HippoImg" src="pngfind.com-hippo-png-2885603.png" />
+              </div> : <p>The fountain is waiting for correct answer.</p>
             }
           </div>
         </div>

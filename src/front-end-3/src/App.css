@@ -86,4 +86,13 @@ h1 {
 
 .Row {
   display: flex;
+  align-items: center;
+}
+
+.Text {
+  text-align: left;
+}
+
+.HippoImg {
+  width: 300px;
 }
