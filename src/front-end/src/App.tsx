@@ -1,6 +1,13 @@
 import React from 'react';
 import './App.css';
 
+const sendAndReceive = async (word: string) => {
+  const response = await fetch('https://j26xvnuu24.execute-api.us-east-1.amazonaws.com/dev/place', { method: 'POST', body: word, mode: 'cors' });
+  const result = await response.text();
+
+  console.log(result);
+}
+
 function App() {
   React.useEffect(() => {
     console.log(`Hello! Welcome to the Thrive Health dev treasure hunt. I'm Hippo, your trusted guide.
@@ -16,42 +23,42 @@ function App() {
 
   return (
     <div className="App">
-      <button className="Tile green" onClick={() => console.log('Try again')}>Plate</button>
-      <button className="Tile blue" onClick={() => console.log('Nope')}>Glass</button>
-      <button className="Tile yellow" onClick={() => console.log('Nay')}>TV</button>
-      <button className="Tile blue" onClick={() => console.log('Not this one')}>Phone</button>
-      <button className="Tile green" onClick={() => console.log('Nah')}>Sock</button>
-      <button className="Tile yellow" onClick={() => console.log('Try again')}>Cactus</button>
-      <button className="Tile blue" onClick={() => console.log('Nope')}>Laptop</button>
-      <button className="Tile green" onClick={() => console.log('No')}>Basket</button>
-      <button className="Tile blue" onClick={() => console.log('Not it')}>Water</button>
-      <button className="Tile blue" onClick={() => console.log('Nahuh')}>Radio</button>
-      <button className="Tile blue" onClick={() => console.log('Nope')}>Cake</button>
-      <button className="Tile green" onClick={() => console.log('No')}>Lamp</button>
-      <button className="Tile green" onClick={() => console.log('Try again')}>Pants</button>
-      <button className="Tile blue" onClick={() => console.log('Nah')}>Carpet</button>
-      <button className="Tile yellow" onClick={() => console.log('Nahuh')}>Chest</button>
-      <button className="Tile blue" onClick={() => console.log('Not this one')}>Box</button>
-      <button className="Tile green" onClick={() => console.log('No')}>Sofa</button>
-      <button className="Tile blue" onClick={() => console.log('Not this')}>Table</button>
-      <button className="Tile yellow" onClick={() => console.log('Not it')}>Pillowcase</button>
-      <button className="Tile blue" onClick={() => console.log('No')}>Pantry</button>
-      <button className="Tile yellow" onClick={() => console.log('Nahuh')}>Bookshelf</button>
-      <button className="Tile blue" onClick={() => console.log('Try again')}>Closet</button>
-      <button className="Tile yellow" onClick={() => console.log('Nah')}>Garden</button>
-      <button className="Tile green" onClick={() => console.log('Nope')}>Flower pot</button>
-      <button className="Tile blue" onClick={() => console.log('Nahuh')}>Safe</button>
-      <button className="Tile blue" onClick={() => console.log('No')}>Sweater</button>
-      <button className="Tile green" onClick={() => console.log('Nahuh')}>Curtains</button>
-      <button className="Tile yellow" onClick={() => console.log('Nope')}>Door</button>
-      <button className="Tile green" onClick={() => console.log('Wrong one')}>Bin</button>
-      <button className="Tile blue" onClick={() => console.log('Yes! That is it. It makes perfect sense, bathtub is by far the most logical place a hippo would store something they care about. But... I can\'t see it here? Oh my! I bet that my friend Gertrude has been around and borrowed it. She really struggles to keep her hands to herself. Can you check with her? ')}>Bathtub</button>
-      <button className="Tile blue" onClick={() => console.log('Nahuh')}>Bed</button>
-      <button className="Tile yellow" onClick={() => console.log('Nope')}>Vase</button>
-      <button className="Tile blue" onClick={() => console.log('Nahuh')}>Cabinet</button>
-      <button className="Tile blue" onClick={() => console.log('Not indeed')}>Palm</button>
-      <button className="Tile green" onClick={() => console.log('Noooooo')}>Cellar</button>
-      <button className="Tile blue" onClick={() => console.log('Nope')}>Statue</button>
+      <button className="Tile green" onClick={() => sendAndReceive('Plate')}>Plate</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Glass')}>Glass</button>
+      <button className="Tile yellow" onClick={() => sendAndReceive('TV')}>TV</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Phone')}>Phone</button>
+      <button className="Tile green" onClick={() => sendAndReceive('Sock')}>Sock</button>
+      <button className="Tile yellow" onClick={() => sendAndReceive('Cactus')}>Cactus</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Laptop')}>Laptop</button>
+      <button className="Tile green" onClick={() => sendAndReceive('Basket')}>Basket</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Water')}>Water</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Radio')}>Radio</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Cake')}>Cake</button>
+      <button className="Tile green" onClick={() => sendAndReceive('Lamp')}>Lamp</button>
+      <button className="Tile green" onClick={() => sendAndReceive('Pants')}>Pants</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Carpet')}>Carpet</button>
+      <button className="Tile yellow" onClick={() => sendAndReceive('Chest')}>Chest</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Box')}>Box</button>
+      <button className="Tile green" onClick={() => sendAndReceive('Sofa')}>Sofa</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Table')}>Table</button>
+      <button className="Tile yellow" onClick={() => sendAndReceive('Pillowcase')}>Pillowcase</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Pantry')}>Pantry</button>
+      <button className="Tile yellow" onClick={() => sendAndReceive('Bookshelf')}>Bookshelf</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Closet')}>Closet</button>
+      <button className="Tile yellow" onClick={() => sendAndReceive('Garden')}>Garden</button>
+      <button className="Tile green" onClick={() => sendAndReceive('Flower pot')}>Flower pot</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Safe')}>Safe</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Sweater')}>Sweater</button>
+      <button className="Tile green" onClick={() => sendAndReceive('Curtains')}>Curtains</button>
+      <button className="Tile yellow" onClick={() => sendAndReceive('Door')}>Door</button>
+      <button className="Tile green" onClick={() => sendAndReceive('Bin')}>Bin</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Bathtub')}>Bathtub</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Bed')}>Bed</button>
+      <button className="Tile yellow" onClick={() => sendAndReceive('Vase')}>Vase</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Cabinet')}>Cabinet</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Palm')}>Palm</button>
+      <button className="Tile green" onClick={() => sendAndReceive('Cellar')}>Cellar</button>
+      <button className="Tile blue" onClick={() => sendAndReceive('Statue')}>Statue</button>
     </div>
   );
 }
