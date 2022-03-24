@@ -54,3 +54,13 @@
   background-color: white;
   border-color: white;
 }
+
+.Text {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.Text2 {
+  text-align: left;
+  margin-top: 40px;
+}

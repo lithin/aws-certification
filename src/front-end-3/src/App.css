@@ -1,7 +1,16 @@
+
+/*
+I can make any wish come true if you give me coins. I only like quarters, loonies, and toonies. $5 would do quite well. How many ways can you give me $5 if you are only to give me the coins I like?
+*/
+
+body {
+  background-color: #14be9e; 
+}
+
 .App {
   margin: 30px auto;
   text-align: center;
-  width: 600px;
+  width: 900px;
 }
 
 .Header {
@@ -10,17 +19,37 @@
 }
 
 .Image {
+  width: 110%;
+  height: auto;
+}
+
+.ImageCover {
   width: 300px;
+  height: 200px;
+  overflow: hidden;
 }
 
 .Input {
-  width: 40px;
+  width: 100px;
   height: 40px;
   margin: 5px;
   text-transform: capitalize;
   text-align: center;
-  border: 1px solid #003a82; 
-  color:#003a82; 
+  border: 1px solid #333; 
+  color:#333; 
+  border-radius: 3px;
+}
+
+h1 {
+  color: white;
+}
+
+.Secret {
+  display: none;
+  margin: 5px 0;
+  padding: 20px;
+  background-color: #fed691;
+  color: #333;
 }
 
 .no {
@@ -42,15 +71,19 @@
 }
 
 .Submit {
-  height: 46px;
-  width: 46px;
+  height: 44px;
   margin-left: 10px;
-  background-color: #003a82;
+  background-color: #333;
   color: white;
   border: 1px solid #333;
+  border-radius: 3px;
 }
 
 .Submit:disabled {
   background-color: white;
   border-color: white;
+}
+
+.Row {
+  display: flex;
 }
